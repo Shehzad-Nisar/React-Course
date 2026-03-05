@@ -1,3 +1,5 @@
+
+
  function customRender(reactElement, container){
 
     const domElement = document.createElement(reactElement.typeof);
@@ -9,6 +11,7 @@
     }
 
     container.appendChild(domElement);
+    
 
   
 }
@@ -27,13 +30,15 @@ customRender(reactElement,mainContainer)
 
 
 
-const button = document.createElement('button');
+// Now we practice how btn elements will be rendered by REACT:
 
+const btnElement = {
+    typeof: 'button',
+    props:{
+        id : "btnID",
+        class : "btnClass"
+    },
+    Children : "click me!"
+}
 
-button.innerHTML = 'click me';
-button.addEventListener('click', ()=>{
-    alert('clicked')
-},false)
-mainContainer.appendChild(button)
-
-
+customRender(btnElement,mainContainer)
