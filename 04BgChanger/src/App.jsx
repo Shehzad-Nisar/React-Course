@@ -13,7 +13,7 @@ function App() {
     <>
       <div className={`h-screen w-screen ${color} text-white flex justify-center items-center`}>
       <h1 className='bg-green-950 text-2xl rounded-4xl p-4'><b><i>Background Changing Buttons</i></b></h1>
-      <nav className='absolute bottom-0 w-full flex justify-around p-4 bg-green-900 rounded-3xl'>
+      <nav className='absolute bottom-0 w-full flex justify-around p-4 bg-green-900 rounded-3xl shadow-black-900'>
       <Button setColor = {setcolor} color="bg-red-500" label="Red" />
       <Button setColor = {setcolor} color="bg-blue-500" label="Blue" />
       <Button setColor = {setcolor} color="bg-green-500" label="Green" />
