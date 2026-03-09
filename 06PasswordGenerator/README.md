@@ -1,16 +1,29 @@
-# React + Vite
+# Password Generator React App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This is a simple **Password Generator** built with **React**. The application allows users to generate random passwords with customizable options such as length, inclusion of numbers, and special characters. Users can also **copy the generated password** to the clipboard with a single click.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- Generate a random password with adjustable length (6–50 characters).  
+- Optionally include **numbers** and **special characters**.  
+- Copy the generated password to the clipboard with a button click.  
+- Real-time updates whenever password settings change.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## React Concepts Used
 
-## Expanding the ESLint configuration
+1. **useState** – Manages state for password, length, numbers, and special character options.  
+2. **useEffect** – Runs side effects to regenerate the password when settings change.  
+3. **useCallback** – Memoizes the password generation function to avoid unnecessary re-creation.  
+4. **Event Handling** – Handles input changes, checkbox toggles, slider adjustments, and copy button clicks.  
+5. **Clipboard API** – Uses `navigator.clipboard.writeText()` to copy passwords.  
+6. **Conditional Logic** – Dynamically includes numbers and special characters in the password based on user selection.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Usage
+
+1. Clone the repository:  
+
+   ```bash
+   git clone <https://github.com/Shehzad-Nisar/React-Course/tree/main/06PasswordGenerator>
+
