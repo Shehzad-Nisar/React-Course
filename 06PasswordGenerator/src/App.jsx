@@ -3,20 +3,54 @@ import React, { useCallback, useEffect, useState } from 'react'
 const App = () => {
 
   const [password , setPassword] = useState("ddddd");
-  const [numAllowed,setnumAllowed] = useState(true);
-  const [charAllowed,setCharAllowed] = useState(true);
+  const [numAllowed,setnumAllowed] = useState(false);
+  const [charAllowed,setCharAllowed] = useState(false);
   const [length, setLength] = useState(8)
 
-  useCallback(()=>{
-    let pass = '';
-    let str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  const GeneratePassword = useCallback(()=>{
 
-    for(let i = 0; i < str.length; i++){
-      console.log(str.charAt(i))
+    let pass = "";
+    //pass password values to string :
+    let str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    //add special characters to password string if allowed:
+    if(charAllowed) 
+      str+="!@#$%&()-+={}[]<>?/~"
+
+    //add numbers to password string if numbers are allowed:
+    if(numAllowed)
+      str+='0123456789';
+    
+    for (let index = 0; index < length ; index++) {
+
+      const val = Math.floor(Math.random()*((str.length)-0+1)+0);
+
+      pass += str.charAt(val);
     }
     
+    setPassword(pass)
+
+  },[numAllowed,charAllowed,length,setPassword])
+
+  const copyToClipboard = ()=>{
+    
+    navigator.clipboard.writeText(password)
+    .then(() => alert("Password copied!"))
+    .catch(err => console.log("Failed to copy: ", err));
+
+
+  }
+
+
+  useEffect(()=>{
+
+    GeneratePassword();
+
 
   },[length,numAllowed,charAllowed,setPassword])
+
+ 
+
 
 
   return (
@@ -27,16 +61,14 @@ const App = () => {
     <div className='flex shadow-2xl rounded-lg overflow-hidden mb-4'>
       <input
        type="text" 
-       placeholder= {password}
+       placeholder= {"Generate your password:"}
+       value={password}
        className='outline-none w-full py-1 px-1 bg-white text-black'
+       onChange={(e) => setText(e.target.value)}
+       readOnly
         />
 
-        <button className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0'>copy</button>
-
-        
-
-
-
+        <button  onClick={copyToClipboard} className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0 hover:to-black'>copy</button>
 
     </div>
 
@@ -56,7 +88,7 @@ const App = () => {
        
 
       onChange={()=> {
-        setnumAllowed(prev=>!prev)
+        setnumAllowed(prev =>!prev)
       }}
        /> <label htmlFor="number">Number</label>
 
@@ -64,7 +96,7 @@ const App = () => {
        type="checkbox" 
        defaultChecked = {charAllowed}
        onChange={()=>{
-        setCharAllowed(prev= !prev)
+        setCharAllowed(prev=> !prev)
        }}
        /><label htmlFor="characters">Characters</label>
 
