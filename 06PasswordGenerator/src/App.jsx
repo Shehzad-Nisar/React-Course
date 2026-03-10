@@ -1,7 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect,  useState } from 'react'
 
 const App = () => {
 
+
+  
   const [password , setPassword] = useState("ddddd");
   const [numAllowed,setnumAllowed] = useState(false);
   const [charAllowed,setCharAllowed] = useState(false);
@@ -10,12 +12,12 @@ const App = () => {
   const GeneratePassword = useCallback(()=>{
 
     let pass = "";
-    //pass password values to string :
+    //pass password values to string  :
     let str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    //add special characters to password string if allowed:
+    //add special characters to password  string if allowed:
     if(charAllowed) 
-      str+="!@#$%&()-+={}[]<>?/~"
+      str+="!@#$%&()-+={}[]?/~"
 
     //add numbers to password string if numbers are allowed:
     if(numAllowed)
@@ -32,22 +34,22 @@ const App = () => {
 
   },[numAllowed,charAllowed,length,setPassword])
 
-  const copyToClipboard = ()=>{
+  const copyToClipboard = useCallback(()=>{
     
     navigator.clipboard.writeText(password)
     .then(() => alert("Password copied!"))
     .catch(err => console.log("Failed to copy: ", err));
+    console.log("copied password:",password);
 
 
-  }
-
+  }, [password])
 
   useEffect(()=>{
 
     GeneratePassword();
 
 
-  },[length,numAllowed,charAllowed,setPassword])
+  },[length,numAllowed,charAllowed,GeneratePassword])
 
  
 
