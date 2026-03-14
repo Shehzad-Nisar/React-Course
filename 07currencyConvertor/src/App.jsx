@@ -16,6 +16,7 @@ function App() {
   const options = Object.keys(fetchRates);
   
   
+  
   //swapping function which just swaps values on pressing button 
   function swap(){
     setFrom(to);
@@ -42,6 +43,62 @@ function App() {
 
   return (
     <>
+    <div className='w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat '
+    style={{backgroundImage: `url(https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg)`}}
+    >
+      <div className='w-full'>
+        <div className='w-full max-w-md mx-auto border rounded-lg p-5 backdrop-blur-sm bg-white/30 border-gray-600'>
+
+        <form onSubmit={(e)=>{
+          e.defaultPrevented()
+          convert()
+
+        }}>
+          <div className='w-full mb-1'>
+
+            <InputBox
+            label= "From"
+            amount = {amount}
+            onChangeAmout = {(amount)=> setAmount(amount)}
+            onChangeCurrency = {(currency)=> setFrom(currency)}
+            currencyOptions = {options}
+            selectedCurrency = {from}
+             />
+          </div>
+          <div className='w-full h-0.5 relative'>
+            <button className='absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-white rounded-md bg-blue-600 text-white px-2 py-0.5  '
+            onClick={swap}>Swap</button>
+          </div>
+          <div className='w-full mb-1'>
+
+            <InputBox
+            label= "To"
+            amount = {convertedAmount}
+            onChangeAmout = {(amount)=> setAmount(amount)}
+            onChangeCurrency = {(currency)=> setTo(currency)}
+            currencyOptions = {options}
+            selectedCurrency = {to}
+            amountDisable
+
+             />
+          </div>
+          <button type='submit'
+          className='w-full bg-blue-600 text-white py-4 px-3 rounded-lg'
+          
+          >Convert from {from.toUpperCase()} to {to.toUpperCase()}</button>
+
+
+
+
+
+
+        </form>
+
+        </div>
+      </div>
+
+
+    </div>
     
       
     </>
