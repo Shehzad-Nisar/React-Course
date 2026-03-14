@@ -3,7 +3,7 @@ import React, { useId } from 'react'
 const InputBox = ({
     label,
     amount,
-    onChangeAmout,
+    onChangeAmount,
     onChangeCurrency,
     currencyOptions = [],
     selectedCurrency = "usd",
@@ -17,7 +17,7 @@ const InputBox = ({
   const id = useId()
   return (
 
-    <div className= {`bg-white p-3 rounded-lg text-sm flex ${className}`} >
+    <div className= {`bg-white p-3 rounded-lg text-sm flex ${className} text-left`} >
       <div className='w-1/2 '>
       <label htmlFor= {id} className='text-black/50 inline-block mb-2'>{label}</label>
       
@@ -28,7 +28,7 @@ const InputBox = ({
       value={amount}
       className='outline-none w-full bg-transparent py-1.5'
       disabled = {amountDisable}
-      onChange={(e)=> onChangeAmout && onChangeAmout(Number(e.target.value))}
+      onChange={(e)=> onChangeAmount && onChangeAmount(Number(e.target.value))}
       />
       </div>
       <div className='w-1/2 flex flex-wrap justify-end text-right'>
