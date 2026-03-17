@@ -32,12 +32,12 @@ export default function Home() {
                 </div>
 
                 <div className="absolute inset-0 w-full sm:my-20 sm:pt-1 pt-12 h-full ">
-                    <img className="w-96" src="./src/assets/Virat Kohli.jpeg" alt="image1" />
+                    <img  className="border w-96 rounded-t-4xl" src="./src/assets/Virat Kohli.jpeg" alt="image1" />
                 </div>
             </aside>
 
             <div className="grid  place-items-center sm:mt-20">
-                <img className="sm:w-96 w-48" src="./src/assets/ViratKohli.jpeg" alt="image2" />
+                <img className="sm:w-96  border w-96 rounded-t-4xl" src="./src/assets/ViratKohli.jpeg" alt="image2" />
             </div>
 
             <h1 className="text-center text-2xl py-10 font-medium">“I love playing under pressure. In fact, if there’s no pressure, then I’m not in the perfect zone.” <p className="">virat kohli</p></h1>
