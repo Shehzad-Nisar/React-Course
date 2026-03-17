@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import {Header} from './index.js'
+import {Layout,Home,About,Contact,User} from './index.js'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -9,7 +9,27 @@ import './index.css'
 
 const router = createBrowserRouter([
   {
-    path
+    path: '/',
+    element: <Layout/>,
+    children: [
+      {
+        index: 'true',
+        element: <Home/>
+      },
+      {
+        path: 'about',
+        element: <About/>
+      },
+      {
+        path: 'contact',
+        element:<Contact/>
+      },
+      {
+        path: 'follower/:id',
+        element: <User/>
+      }
+      
+    ]
   }
 ])
 
