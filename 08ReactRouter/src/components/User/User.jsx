@@ -1,15 +1,13 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams } from "react-router-dom";
 
-const User = () => {
-  const {id} =  useParams()
+function User() {
+  const { id } = useParams();
+
   return (
-    <>
-    <h1>id is : {id} </h1>
-    <h1>hello</h1>
-      
-    </>
-  )
+    <div>
+      <h1>User ID {id}</h1>
+    </div>
+  );
 }
 
-export default User
+export default User;

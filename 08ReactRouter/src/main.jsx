@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { Home,Footer, About } from "./components/index.js"
+import { Home,Footer, About,Header,Contact,Github ,Error} from "./components/index.js"
 import './index.css'
 import User from './components/User/User.jsx'
 
@@ -19,7 +19,21 @@ const route  = createBrowserRouter([
     element: 
     <div>
     <Home/>
-    <Footer/></div>
+    <Footer/></div>,
+    children: [
+      {
+        path: 'contact',
+        element: <Contact/>
+      },
+      {
+        path: 'github',
+        element: <Github/>
+
+      },{
+        path: 'header',
+        element: <Header/>
+      }
+    ]
   },
   {
     path: '/about',
@@ -29,7 +43,7 @@ const route  = createBrowserRouter([
     <About/></div>
   },
   {
-    path: '/use/:id',
+    path: '/user/:id',
     element:
     <div>
     <Home/>
@@ -38,6 +52,10 @@ const route  = createBrowserRouter([
     
     </div>
   },
+  {
+    path: '*',
+    element: <Error/>
+  }
  
 ])
 
