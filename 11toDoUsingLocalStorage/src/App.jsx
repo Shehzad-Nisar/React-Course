@@ -1,6 +1,6 @@
 import {TodoContext,TodoProvider,useTodo} from './contexts/index'
 import './App.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function App() {
   const [todos,setTodos] = useState([])
@@ -28,6 +28,26 @@ function App() {
       ...prevObj,completed: !prevObj.completed
     } : prevObj))
   }
+
+  // when the components mounted then the todos return to me
+  // which mean we are trying get todos when we need  :
+
+  useEffect(()=>{
+    const todos = JSON.parse(localStorage.getItem("todos"));
+    if(todos && todos.length > 0 ){
+      setTodos(todos);
+    }
+    
+
+  },[])
+
+
+
+  //now we should pass new todos or updated todos to local storage so :
+  useEffect(()=>{
+    localStorage.setItem("todos",JSON.stringify(todos))
+
+  },[todos])
 
 
   return (
