@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import {TodoContext,TodoContextProvider,useTodo} from './context/index'
+import {TodoForm,TodoItem} from "./components"
 
 function App() {
   const [todos,setTodos] = useState([]);
@@ -27,6 +28,26 @@ function App() {
     setTodos((prevTodos)=>prevTodos.map((eachTodo)=>eachTodo.id===id?{...eachTodo,completed: !eachTodo.completed}:eachTodo))
   }
 
+  // we want to use browser's storage for storing todos data:
+ // In this useEffect we are getting prevously saved data from local storage and saved into usestate of setTodos()
+  useEffect(()=>{
+
+    let browsersData = JSON.parse(localStorage.getItem("todosData"));
+
+    if (browsersData && browsersData.length>0) {
+      setTodos(browsersData);
+      
+    }
+
+  },[])
+
+  /* Now are trying to saved todos data to browsers local storage:
+  we are using useffect as settodos dependently which means on each change in setTodos() we can saved data automaticlly */
+
+  useEffect(()=>{
+    localStorage.setItem("todosData",JSON.stringify(todos))
+  },[todos])
+
 
 
   return (
@@ -36,9 +57,19 @@ function App() {
                     <h1 className="text-2xl font-bold text-center mb-8 mt-2  text-[#f7e1d7]">Manage Your Todos</h1>
                     <div className="mb-4">
                         {/* Todo form goes here */} 
+                        <TodoForm/>
                     </div>
                     <div className="flex flex-wrap gap-y-3">
                         {/*Loop and Add TodoItem here */}
+                        {
+                          todos.map((eachTodo)=>(
+                            <div key={eachTodo.id} className='w-full'>
+                              <TodoItem todo = {eachTodo}/>
+
+                            </div>
+
+                          ))
+                        }
                     </div>
                 </div>
             </div>
