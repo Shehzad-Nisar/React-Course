@@ -33,8 +33,14 @@ export const todoSlice = createSlice({
             const todo = state.todos.find((e)=> e.id === action.payload.id);
             if(todo){
                 todo.title = action.payload.title;
+            }   
+        },
+        completedTodo: (state,action)=>{
+            const todo = state.todos.find((e)=> e.id === action.payload.id);
+            if(todo){
+                todo.completed = !todo.completed
             }
-            
         }
+        
     }
 })
