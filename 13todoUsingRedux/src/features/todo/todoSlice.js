@@ -27,8 +27,14 @@ export const todoSlice = createSlice({
         deleteTodo: (state,action) => {
            state.todos = state.todos.filter((todo)=> todo.id!= action.payload)
         },
+        //trying to use find method approach which return first matching element then 
+        // we can update that todo easily ...
         updateTodo: (state,action)=>{
-            state.todos = state.todos.map((eachTodo)=> eachTodo.id=== action.payload.id? eachTodo.payload.title=action.title.payload:eachTodo)
+            const todo = state.todos.find((e)=> e.id === action.payload.id);
+            if(todo){
+                todo.title = action.payload.title;
+            }
+            
         }
     }
 })
