@@ -40,7 +40,7 @@ export const todoSlice = createSlice({
             }   
         },
         completedTodo: (state,action)=>{
-            const todo = state.todos.find((e)=> e.id === action.payload.id);
+            const todo = state.todos.find((e)=> e.id === action.payload);
             if(todo){
                 todo.completed = !todo.completed
             }
