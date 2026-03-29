@@ -17,18 +17,17 @@ const TodoForm = () => {
     <form onSubmit={handleSubmit} className="flex gap-3 w-full">
       <input
         type="text"
-        placeholder="Add your todo..."
-        className="flex-1 px-4 py-3 border border-gray-300 rounded-2xl shadow-inner
-                   focus:outline-none focus:ring-2 focus:ring-teal-500
+        placeholder="Add a new todo..."
+        className="flex-1 px-4 py-3 border border-gray-300 rounded-xl shadow-sm
+                   focus:outline-none focus:ring-2 focus:ring-indigo-300
                    transition duration-200 w-full"
         value={todo}
         onChange={(e) => setTodo(e.target.value)}
       />
-
       <button
         type="submit"
-        className="bg-teal-500 text-white px-6 py-3 rounded-2xl shadow-lg hover:bg-teal-600
-                   active:scale-95 transition transform duration-200 font-semibold"
+        className="bg-indigo-600 text-white px-6 py-3 rounded-xl shadow-md
+                   hover:bg-indigo-700 active:scale-95 transition transform duration-200 font-semibold"
       >
         Add
       </button>
