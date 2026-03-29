@@ -18,7 +18,7 @@ function App() {
 
         {/* Todo List Card */}
         <div className="bg-slate-50 rounded-3xl shadow-2xl p-6 w-full">
-          <h2 className="text-2xl font-semibold text-gray-700 mb-4">Your Todos</h2>
+          <h2 className="text-2xl font-semibold text-center text-gray-700 mb-4">Your Todos</h2>
           <TodoItem />
         </div>
       </div>
