@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import {TodoForm} from './components/index'
 import './App.css'
 
 function App() {
@@ -8,7 +7,15 @@ function App() {
 
   return (
     <>
-      <h1 className='bg-yellow-300 text-center m-5 p-5 rounded-2xl hover:bg-blue-500 hover:text-white'>hello </h1>
+     <div className="min-h-screen bg-linear-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+      <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
+        <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
+          Todo App
+        </h1>
+
+        <TodoForm />
+      </div>
+    </div>
     </>
   )
 }
