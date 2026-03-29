@@ -7,8 +7,12 @@ const initialState = {
             title: "first task!",
             completed: false
         }
+
+        
     ]
+    
 }
+
 
 export const todoSlice = createSlice({
     name: 'todos',
