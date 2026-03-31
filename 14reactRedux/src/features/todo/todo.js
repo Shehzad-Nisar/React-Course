@@ -2,27 +2,32 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 
 
-const initialState = [{
-    id: nanoid(),
-    title: "My first todo",
-    date: "3/31/2026",
-    toggle: false
-}]
+const initialState = {
+    todos: [
+        {id: nanoid(), title: "first todo", date : new Date().toLocaleDateString() , completed: false}
+    ]
+}
 
 export const todoSlice = createSlice({
     initialState,
     name:'todo',
     reducers: {
         addTodo:(state,action)=>{
+            if (!action.payload.title) return; 
             const todo = {
                 id: nanoid(),
                 title: action.payload.title,
-                date: action.payload.date,
-                toggle: false
+                date: new Date().toLocaleDateString(),
+                completed: false
             }
-            initialState.push(todo)
+            state.todos.push(todo)
         
           
         }
     }
 })
+
+
+export const  {addTodo} = todoSlice.actions
+
+export default todoSlice.reducer;
