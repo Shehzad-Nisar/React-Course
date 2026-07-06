@@ -18,7 +18,7 @@ const App = () => {
      <div className=''>
       <input type="number"
        value={amount}
-       placeholder='amount'
+       placeholder='amount'd
        onChange={(e)=> setAmount(e.target.value)}
       
       />
